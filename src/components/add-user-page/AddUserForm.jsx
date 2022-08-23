@@ -58,7 +58,7 @@ function AddUserForm() {
 
             alert(`User ${user.username} was successfully created!`);
         } catch (e) {
-            console.log('To add error page');
+            alert('To add error page');
         }
     }
 
