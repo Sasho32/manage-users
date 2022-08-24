@@ -6,10 +6,12 @@
 }
 
 div#root {
+    position: relative;
     min-width: 400px; // inache pri testvaneto na razlichnite queryta mn gadno se sviva i formata ostava izvyn nego, okolo 400px - malko po-malko beshe
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(to right, #ffd89b, #19547b);
+    @include flex-box(column, nowrap, 100px, center, center);
 
     nav#nav-bar {
         position: absolute;
@@ -30,5 +32,109 @@ div#root {
             text-decoration: none;
             margin-right: 10px;
         }
+    }
+
+    div#add-container {
+        margin-top: 100px;
+        background-color: #fff;
+        width: 350px;
+        min-height: 450px;
+        position: relative;
+        border-radius: 50px;
+        overflow: hidden;
+
+        h1#add-user-heading {
+            position: absolute;
+            width: 100%;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        form {
+            position: absolute;
+            width: 100%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -39%);
+            @include flex-box(column, nowrap, 0, center, center);
+
+            div[class$='field'] {
+                position: relative;
+                width: 90%;
+                margin-bottom: 40px;
+                border-bottom: 1px solid silver;
+
+                input {
+                    width: 100%;
+                    border: none;
+                    outline: none;
+                    padding: 7px 0;
+
+                    &:focus ~ span.border-span::before {
+                        width: 100%;
+                    }
+                    &:focus ~ label,
+                    &:valid ~ label {
+                        left: 0;
+                        top: -5px;
+                        color: #00b9fb;
+                    }
+                }
+
+                label {
+                    transition: 0.5s;
+                    color: #adadad;
+                    position: absolute;
+                    top: 50%;
+                    left: 5px;
+                    transform: translateY(-50%);
+                }
+
+                span.border-span::before {
+                    content: '';
+                    width: 0;
+                    position: absolute;
+                    left: 0;
+                    bottom: 0;
+                    height: 2px;
+                    background-color: #00b9fb;
+                    transition: 0.5s;
+                }
+            }
+
+            div.gender {
+                margin: 10px 0 30px 0;
+                width: 90%;
+                text-align: right;
+
+                input {
+                    margin-left: 5px;
+                }
+            }
+
+            button {
+                width: 90%;
+                color: #fff;
+                background-color: #00b9fb;
+                padding: 5px 15px;
+                border: 2px solid;
+                border-radius: 10px;
+                font-size: 1em;
+                font-weight: bold;
+                transition: 0.5s;
+                cursor: pointer;
+
+                &:hover {
+                    border-color: #00b9fb;
+                }
+            }
+        }
+    }
+
+    h1#count-heading {
+        color: #333;
+        text-align: center;
     }
 }
