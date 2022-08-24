@@ -190,6 +190,70 @@ div#root {
                     border-radius: 50%;
                     padding: 5px;
                 }
+
+                .edit-container {
+                    width: 50%;
+                    height: 80%;
+                    position: absolute;
+                    right: 10%;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    @include flex-box(column, nowrap, 10px, center, stretch);
+                    transition: 0.8s;
+
+                    img {
+                        position: absolute;
+                        width: 30px;
+                        height: 30px;
+                        top: 0;
+                        right: 0;
+                        transform: translateX(130%);
+                        cursor: pointer;
+                    }
+
+                    div[class$='button'] {
+                        @include toogle-element(true);
+                        text-align: center;
+                        transition: 0.4s;
+
+                        &#edit-button {
+                            color: transparent;
+                        }
+                        &#delete-button {
+                            color: transparent;
+                        }
+                    }
+
+                    &.active {
+                        div[class$='button'] {
+                            @include toogle-element();
+                            font-weight: bold;
+
+                            &.edit-button {
+                                color: green;
+
+                                &:hover {
+                                    background-color: green;
+                                }
+                            }
+                            &.delete-button {
+                                color: red;
+
+                                &:hover {
+                                    background-color: red;
+                                }
+                            }
+
+                            &:hover {
+                                color: #fff;
+                                padding: 4px;
+                                cursor: pointer;
+                            }
+                        }
+
+                        transform: translate(130%, -50%);
+                    }
+                }
             }
         }
     }
