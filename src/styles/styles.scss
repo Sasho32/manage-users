@@ -11,7 +11,7 @@ div#root {
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(to right, #ffd89b, #19547b);
-    @include flex-box(column, nowrap, 100px, center, center);
+    @include flex-box(row, wrap, 20px, center, center);
 
     nav#nav-bar {
         position: absolute;
