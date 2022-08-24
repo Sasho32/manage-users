@@ -11,7 +11,7 @@ div#root {
     min-height: 100vh;
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(to right, #ffd89b, #19547b);
-    @include flex-box(row, wrap, 20px, center, center);
+    @include flex-box(column, nowrap, 100px, center, center);
 
     nav#nav-bar {
         position: absolute;
@@ -136,5 +136,61 @@ div#root {
     h1#count-heading {
         color: #333;
         text-align: center;
+    }
+
+    #wrapper {
+        margin-top: 100px;
+        @include flex-box(row, wrap, 0, flex-start, center);
+        row-gap: 100px;
+        width: 100vw;
+
+        .user-wrapper {
+            width: 300px;
+            margin-left: 20px;
+
+            .user-container {
+                position: relative;
+                width: 150px;
+                height: 150px;
+                border-radius: 50%;
+                border: 2px solid #333;
+
+                &.male {
+                    background-image: linear-gradient(
+                        to bottom right,
+                        #314755,
+                        #26a0da
+                    );
+                }
+
+                &.female {
+                    background-image: linear-gradient(
+                        to bottom right,
+                        #ff6e7f,
+                        #bfe9ff
+                    );
+                }
+
+                h1.username-heading {
+                    @include center-absolute;
+                    font-size: 20px;
+                    font-weight: 600;
+                    width: 100%;
+                    text-align: center;
+                    overflow: hidden;
+                    color: #fff;
+                }
+
+                div.user-id {
+                    position: absolute;
+                    text-align: center;
+                    width: 20px;
+                    height: 20px;
+                    background-color: #fff;
+                    border-radius: 50%;
+                    padding: 5px;
+                }
+            }
+        }
     }
 }

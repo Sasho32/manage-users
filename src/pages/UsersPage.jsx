@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { FadeLoader } from 'react-spinners';
 import Nav from '../layouts/Nav';
+import UsersList from '../components/users-page/UsersList';
 
 function UsersPage() {
     document.title = 'Users';
@@ -23,10 +24,7 @@ function UsersPage() {
     ) : (
         <>
             <Nav />
-            {!users.length && <h1>No users presented!</h1>}
-            {users.map(user => (
-                <h1 key={user.id}>{user.username}</h1>
-            ))}
+            <UsersList usersList={users} />
         </>
     );
 }
