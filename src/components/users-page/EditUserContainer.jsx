@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { ActiveEditContainer } from './UsersList';
 import edit from '../../imgs/edit.png';
+import { UpdateUsersContext } from '../../pages/UsersPage';
 
 function EditUserContainer({
     userId,
@@ -9,6 +10,8 @@ function EditUserContainer({
     newName,
     setInputCurrentName,
 }) {
+    const { setUpdateUsers } = useContext(UpdateUsersContext);
+
     const { activeEditContainer, setActiveEditContainer } =
         useContext(ActiveEditContainer);
 
@@ -46,6 +49,7 @@ function EditUserContainer({
                 }
 
                 setIsEditing(false);
+                setUpdateUsers(prev => ++prev);
                 return;
             }
 
@@ -62,6 +66,8 @@ function EditUserContainer({
             await fetch(`http://localhost:3001/users/${userId}`, {
                 method: 'DELETE',
             });
+
+            setUpdateUsers(prev => ++prev);
         } catch (e) {
             alert('to add error page');
         }
