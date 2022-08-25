@@ -181,6 +181,17 @@ div#root {
                     color: #fff;
                 }
 
+                input {
+                    @include center-absolute;
+                    font-size: 20px;
+                    font-weight: 600;
+                    background-color: transparent;
+                    border: none;
+                    outline: none;
+                    width: 80%;
+                    text-align: left;
+                }
+
                 div.user-id {
                     position: absolute;
                     text-align: center;
