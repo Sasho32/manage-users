@@ -3,6 +3,7 @@ import { ActiveEditContainer } from './UsersList';
 import edit from '../../imgs/edit.png';
 import { UpdateUsersContext } from '../../pages/UsersPage';
 import { useNavigate } from 'react-router-dom';
+import { ModalContext } from '../../App';
 
 function EditUserContainer({
     userId,
@@ -17,6 +18,8 @@ function EditUserContainer({
 
     const { activeEditContainer, setActiveEditContainer } =
         useContext(ActiveEditContainer);
+
+    const { openModalWithMessage } = useContext(ModalContext);
 
     function handleEditImgClick() {
         // при затваряне на edit контейнъра
@@ -47,7 +50,7 @@ function EditUserContainer({
 
                 if (response.status === 400) {
                     const { err } = await response.json();
-                    alert(err);
+                    openModalWithMessage(err);
                     return;
                 }
 

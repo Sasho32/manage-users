@@ -1,8 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { ModalContext } from '../../App';
 
 function AddUserForm() {
     const navigate = useNavigate();
+
+    const { openModalWithMessage } = useContext(ModalContext);
 
     const [user, setUser] = useState({
         email: '',
@@ -36,19 +39,19 @@ function AddUserForm() {
                         ''
                     );
                     if (err.includes('@')) {
-                        alert(
+                        openModalWithMessage(
                             `User with email ${user.email} is already registered!`
                         );
                         return;
                     }
 
-                    alert(
+                    openModalWithMessage(
                         `User with username ${user.username} is already registered!`
                     );
                     return;
                 }
 
-                alert(err);
+                openModalWithMessage(err);
                 return;
             }
 
@@ -59,7 +62,9 @@ function AddUserForm() {
                 gender: null,
             });
 
-            alert(`User ${user.username} was successfully created!`);
+            openModalWithMessage(
+                `User ${user.username} was successfully created!`
+            );
         } catch (e) {
             navigate('/error');
         }

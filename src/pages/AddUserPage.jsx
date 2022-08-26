@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useEffect } from 'react';
 import { FadeLoader } from 'react-spinners';
 import AddUserForm from '../components/add-user-page/AddUserForm';
 import RegisteredUsersHeading from '../components/add-user-page/RegisteredUsersHeading';
 import Nav from '../layouts/Nav';
 import { useNavigate } from 'react-router-dom';
+import { ModalContext } from '../App';
 
 function AddUserPage() {
     document.title = 'Add user';
@@ -14,6 +15,8 @@ function AddUserPage() {
 
     const navigate = useNavigate();
 
+    const { openedModal } = useContext(ModalContext);
+
     useEffect(() => {
         fetch('http://localhost:3001/users/count')
             .then(res => res.json())
@@ -22,7 +25,7 @@ function AddUserPage() {
                 setLoading(false);
             })
             .catch(e => navigate('/error'));
-    }, []);
+    }, [openedModal]);
 
     return loading ? (
         <FadeLoader />
