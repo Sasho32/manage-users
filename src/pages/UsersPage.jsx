@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { FadeLoader } from 'react-spinners';
 import Nav from '../layouts/Nav';
 import { createContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const UpdateUsersContext = createContext();
 
@@ -14,6 +15,8 @@ function UsersPage() {
 
     const [updateUsers, setUpdateUsers] = useState(0);
 
+    const navigate = useNavigate();
+
     useEffect(() => {
         fetch('http://localhost:3001/users/')
             .then(res => res.json())
@@ -21,7 +24,7 @@ function UsersPage() {
                 setUsers(userList);
                 setLoading(false);
             })
-            .catch(e => alert('to add error page'));
+            .catch(e => navigate('/error'));
     }, [updateUsers]);
 
     return loading ? (

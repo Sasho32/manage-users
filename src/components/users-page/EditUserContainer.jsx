@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { ActiveEditContainer } from './UsersList';
 import edit from '../../imgs/edit.png';
 import { UpdateUsersContext } from '../../pages/UsersPage';
+import { useNavigate } from 'react-router-dom';
 
 function EditUserContainer({
     userId,
@@ -10,6 +11,8 @@ function EditUserContainer({
     newName,
     setInputCurrentName,
 }) {
+    const navigate = useNavigate();
+
     const { setUpdateUsers } = useContext(UpdateUsersContext);
 
     const { activeEditContainer, setActiveEditContainer } =
@@ -57,7 +60,7 @@ function EditUserContainer({
             setIsEditing(true);
             setInputCurrentName();
         } catch (e) {
-            alert('to add error page');
+            navigate('/error');
         }
     }
 
@@ -69,7 +72,7 @@ function EditUserContainer({
 
             setUpdateUsers(prev => ++prev);
         } catch (e) {
-            alert('to add error page');
+            navigate('/error');
         }
     }
 

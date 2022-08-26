@@ -1,6 +1,9 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function AddUserForm() {
+    const navigate = useNavigate();
+
     const [user, setUser] = useState({
         email: '',
         username: '',
@@ -58,7 +61,7 @@ function AddUserForm() {
 
             alert(`User ${user.username} was successfully created!`);
         } catch (e) {
-            alert('To add error page');
+            navigate('/error');
         }
     }
 

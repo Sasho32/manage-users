@@ -269,3 +269,16 @@ div#root {
         }
     }
 }
+
+div.error-container {
+    height: 100vh;
+    min-width: 100vw;
+    color: #fff;
+    background-color: #333;
+    @include flex-box(column, nowrap, 30px, center, center);
+
+    a {
+        color: greenyellow;
+        text-decoration: none;
+    }
+}
