@@ -236,6 +236,9 @@ div#root {
                     }
 
                     &.active {
+                        transform: translate(130%, -50%);
+                        //-50% заради transform-а от 211 - оригиналната позиция на EdtCnt е 50% надолу от top -> top: 50% - 210
+
                         div[class$='button'] {
                             @include toogle-element();
                             font-weight: bold;
@@ -261,8 +264,6 @@ div#root {
                                 cursor: pointer;
                             }
                         }
-
-                        transform: translate(130%, -50%);
                     }
                 }
             }
